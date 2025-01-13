@@ -26,7 +26,7 @@ router.post(
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
-
+      console.log(req.user);
       // Create a new note
       const note = new Notes({
         title,
@@ -90,7 +90,7 @@ router.post(
             if (!note) {
             return res.status(404).send("Not Found");
             }
-        
+            console.log(note);
             // Allow delete only if user owns the note
             if (note.user.toString() !== req.user.id) {
             return res.status(401).send("Not Allowed");
